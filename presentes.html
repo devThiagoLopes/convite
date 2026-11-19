@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentes - Lembrete Júlia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+    .texto-dourado {
+        background: linear-gradient(135deg, #cda729 0%, #cebb62 45%, #ac8426 80%, #a4721c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
+        display: inline-block;
+        padding: 0.1em 0.3em;
+    }
+
+    body {
+        background-color: #000000;
+        background-image: url('img/fundo.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    @media (min-width: 768px) {
+        body {
+            background-image: url('img/fundo-desktop.jpg');
+        }
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .carousel-item {
+        scroll-snap-align: center;
+    }
+
+    /* Poeira dourada - animação leve sobre a página inteira */
+    #poeiraDourada {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .particula-dourada {
+        position: absolute;
+        bottom: -10px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #f3d98a 0%, #cda729 60%, transparent 100%);
+        box-shadow: 0 0 3px 0.5px rgba(205, 167, 41, 0.35);
+        opacity: 0;
+        animation-name: subirPoeira;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes subirPoeira {
+        0% {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 0.3;
+        }
+
+        50% {
+            transform: translate(var(--deriva-x), -50vh);
+            opacity: 0.4;
+        }
+
+        90% {
+            opacity: 0.15;
+        }
+
+        100% {
+            transform: translate(calc(var(--deriva-x) * 1.6), -100vh);
+            opacity: 0;
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <section class="relative z-10 min-h-screen text-white flex flex-col items-center px-4 py-10">
+
+        <a href="lembrete.html?voltar=1"
+            class="self-start ml-2 sm:ml-6 text-base tracking-[2px] text-gray-300 hover:text-white transition"
+            style="font-family: 'Playfair Display', serif;">
+            &larr; VOLTAR
+        </a>
+
+        <h1 style="font-family:'Great Vibes',cursive;" class="text-white text-7xl mt-6 text-center">
+            Sugestões de Presentes
+        </h1>
+
+        <img src="img/arabesco-inferior.png" class="w-50 mt-2" alt="arabesco">
+
+        <p class="texto-dourado text-base leading-6 mt-2 max-w-[320px] text-center">
+            Sua presença já é o maior presente! Mas se quiser me mimar,
+            aqui vão algumas ideias.
+        </p>
+
+        <!-- Carrossel -->
+        <div class="relative w-full max-w-5xl mt-10 px-10 sm:px-12">
+
+            <button id="prevBtn" aria-label="Anterior"
+                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-[#cda729] text-[#cda729] flex items-center justify-center hover:bg-[#cda729] hover:text-black transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+
+            <div id="carousel" class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-4 scrollbar-hide">
+
+                <!-- Chave Pix -->
+                <div
+                    class="carousel-item shrink-0 snap-center w-full md:w-1/3 lg:w-1/4 flex flex-col items-center bg-black/40 border border-[#cda729]/40 rounded-2xl p-6 backdrop-blur-sm">
+                    <div
+                        class="w-20 h-20 rounded-full flex items-center justify-center bg-cover bg-center"
+                        style="background-image: url('img/circulo.png');">
+                        <iconify-icon icon="ph:key" width="36" height="36" style="color:#000;"></iconify-icon>
+                    </div>
+                    <p class="texto-dourado font-bold mt-4">Chave Pix</p>
+                    <p class="text-white text-base mt-1 tracking-wide">57093765823</p>
+                    <button data-copy="57093765823"
+                        class="copy-btn mt-3 text-sm px-3 py-1 rounded-full border border-[#cda729] text-[#cda729] hover:bg-[#cda729] hover:text-black transition">
+                        Copiar chave
+                    </button>
+                </div>
+
+                <!-- Sapato -->
+                <div
+                    class="carousel-item shrink-0 snap-center w-full md:w-1/3 lg:w-1/4 flex flex-col items-center bg-black/40 border border-[#cda729]/40 rounded-2xl p-6 backdrop-blur-sm">
+                    <div
+                        class="w-20 h-20 rounded-full flex items-center justify-center bg-cover bg-center"
+                        style="background-image: url('img/circulo.png');">
+                        <iconify-icon icon="ph:sneaker" width="36" height="36" style="color:#000;"></iconify-icon>
+                    </div>
+                    <p class="texto-dourado font-bold mt-4">Sapato</p>
+                    <p class="text-white text-base mt-1">Tamanho 38</p>
+                </div>
+
+                <!-- Calça -->
+                <div
+                    class="carousel-item shrink-0 snap-center w-full md:w-1/3 lg:w-1/4 flex flex-col items-center bg-black/40 border border-[#cda729]/40 rounded-2xl p-6 backdrop-blur-sm">
+                    <div
+                        class="w-20 h-20 rounded-full flex items-center justify-center bg-cover bg-center"
+                        style="background-image: url('img/circulo.png');">
+                        <iconify-icon icon="ph:pants" width="36" height="36" style="color:#000;"></iconify-icon>
+                    </div>
+                    <p class="texto-dourado font-bold mt-4">Calça</p>
+                    <p class="text-white text-base mt-1">Tamanho 38</p>
+                </div>
+
+                <!-- Blusa -->
+                <div
+                    class="carousel-item shrink-0 snap-center w-full md:w-1/3 lg:w-1/4 flex flex-col items-center bg-black/40 border border-[#cda729]/40 rounded-2xl p-6 backdrop-blur-sm">
+                    <div
+                        class="w-20 h-20 rounded-full flex items-center justify-center bg-cover bg-center"
+                        style="background-image: url('img/circulo.png');">
+                        <iconify-icon icon="ph:t-shirt" width="36" height="36" style="color:#000;"></iconify-icon>
+                    </div>
+                    <p class="texto-dourado font-bold mt-4">Blusa</p>
+                    <p class="text-white text-base mt-1">Tamanho P/M</p>
+                </div>
+
+                <!-- Acessórios -->
+                <div
+                    class="carousel-item shrink-0 snap-center w-full md:w-1/3 lg:w-1/4 flex flex-col items-center bg-black/40 border border-[#cda729]/40 rounded-2xl p-6 backdrop-blur-sm">
+                    <div
+                        class="w-20 h-20 rounded-full flex items-center justify-center bg-cover bg-center"
+                        style="background-image: url('img/circulo.png');">
+                        <iconify-icon icon="ph:diamond" width="36" height="36" style="color:#000;"></iconify-icon>
+                    </div>
+                    <p class="texto-dourado font-bold mt-4">Acessórios</p>
+                    <p class="text-white text-base mt-1">Cor dourada</p>
+                </div>
+
+            </div>
+
+            <button id="nextBtn" aria-label="Próximo"
+                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-[#cda729] text-[#cda729] flex items-center justify-center hover:bg-[#cda729] hover:text-black transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M9 6l6 6-6 6" />
+                </svg>
+            </button>
+
+        </div>
+
+    </section>
+
+    <script src="js/presentes.js"></script>
+    <script src="js/poeira.js"></script>
+    <script src="js/sessao.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembrete Júlia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+    /* Efeito Dourado Metálico Elegante */
+    .texto-dourado {
+        background: linear-gradient(135deg, #cda729 0%, #cebb62 45%, #ac8426 80%, #a4721c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
+        display: inline-block;
+        padding: 0.1em 0.3em; /* Dá o espaço necessário para a caligrafia não ser cortada */
+    }
+
+    /* Borda dourada dos popups - mesmo gradiente do texto-dourado */
+    .popup-borda-dourada {
+        background: linear-gradient(135deg, #cda729 0%, #cebb62 45%, #ac8426 80%, #a4721c 100%);
+        padding: 2px;
+    }
+
+/* Configuração do Fundo - Mobile (padrão) */
+    body {
+        background-color: #000000;
+        background-image: url('img/fundo.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    /* Configuração do Fundo - Desktop (telas acima de 768px) */
+    @media (min-width: 768px) {
+        body {
+            background-image: url('img/fundo-desktop.jpg'); /* Substitua pelo nome do seu arquivo de desktop */
+        }
+    }
+
+    #mascara {
+        opacity: 0;
+        transform: translate(120px,-120px);
+    }
+
+    #logoConvite {
+        opacity: 0;
+        transform: translate(-120px,-120px);
+    }
+
+    #conteudoConvite {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .mascara-animar {
+        animation: entrarMascara .8s ease forwards;
+    }
+
+    .logo-animar {
+        animation: entrarLogo .8s ease forwards;
+    }
+
+    .conteudo-animar {
+        animation: revelarConteudo 1s ease forwards;
+    }
+
+    @keyframes entrarMascara {
+
+        from {
+            opacity: 0;
+            transform: translate(120px,-120px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(0,0);
+        }
+
+    }
+
+    @keyframes entrarLogo {
+
+        from {
+            opacity: 0;
+            transform: translate(-120px,-120px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(0,0);
+        }
+
+    }
+
+    @keyframes revelarConteudo {
+
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    /* Poeira dourada - animação leve sobre a página inteira */
+    #poeiraDourada {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .particula-dourada {
+        position: absolute;
+        bottom: -10px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #f3d98a 0%, #cda729 60%, transparent 100%);
+        box-shadow: 0 0 3px 0.5px rgba(205, 167, 41, 0.35);
+        opacity: 0;
+        animation-name: subirPoeira;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes subirPoeira {
+        0% {
+            transform: translate(0, 0);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 0.3;
+        }
+
+        50% {
+            transform: translate(var(--deriva-x), -50vh);
+            opacity: 0.4;
+        }
+
+        90% {
+            opacity: 0.15;
+        }
+
+        100% {
+            transform: translate(calc(var(--deriva-x) * 1.6), -100vh);
+            opacity: 0;
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONVITE -->
+    <section id="convite"
+        class="min-h-screen text-white relative z-10 overflow-hidden">
+
+        <!-- Máscara -->
+        <img
+            src="img/logo-julia.png"
+            id="mascara"
+            class="absolute top-2 right-4 w-24 sm:w-40 md:w-40 lg:w-40 z-10"
+            alt="Máscara">
+
+            <!-- Logo Baile de Máscaras -->
+<div
+    id="logoConvite"
+    class="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
+
+    <img
+        src="img/logo-baile-mascaras.png"
+        alt="Baile de Máscaras"
+        class="w-32 sm:w-40 md:w-48 h-auto">
+
+</div>
+
+        <div
+            id="conteudoConvite"
+            class="max-w-[380px] mx-auto min-h-screen flex flex-col items-center text-center px-6 py-8">
+
+            <h1
+                style="font-family:'Great Vibes',cursive;"
+                class="texto-dourado text-9xl mt-16 sm:mt-10 md:mt-10">
+
+                Júlia
+
+            </h1>
+
+            <!-- 15 anos -->
+            <h2
+                style="font-family:'Great Vibes',cursive;"
+                class="texto-dourado text-7xl">
+
+                15 anos
+
+            </h2>
+
+            <!-- Arabesco -->
+            <img
+                src="img/arabesco-inferior.png"
+                class="w-50 mt-2"
+                alt="arabesco">
+
+            <!-- Texto -->
+            <p
+                class="texto-dourado text-base leading-6 mt-2 max-w-[280px]">
+
+                Meu dia tão esperado está chegando...
+                <br>
+
+                Sua presença já está confirmada e isso me deixa muito feliz!
+                Aqui vai um lembrinho com os detalhes do meu baile.
+
+            </p>
+
+            <!-- Data -->
+            <div
+                class="mt-10 text-white text-3xl font-bold uppercase">
+                04 | DEZEMBRO | ÀS 19:30
+
+            </div>
+
+            <!-- Traje -->
+            <p
+                class="mt-6 texto-dourado text-base">
+
+                Traje sugerido - Social/Esporte fino - All Black
+
+            </p>
+            <p
+                class="mt-2 text-white text-base">
+
+                Presença confirmada • Te esperamos lá!
+
+            </p>
+
+            <!-- Arabesco -->
+            <img
+                src="img/arabesco-inferior.png"
+                class="w-50 mt-3"
+                alt="arabesco">
+
+            <!-- Ícones -->
+            <div class="flex gap-6 mt-4 mb-4 items-center justify-center">
+
+                <!-- WhatsApp -->
+                <button
+                    type="button"
+                    id="btnWhatsapp"
+                    class="relative w-20 h-20 flex items-center justify-center shadow-xl hover:scale-110 transition duration-300">
+
+                    <!-- Imagem de Fundo (Círculo) -->
+                    <img
+                        src="img/circulo.png"
+                        alt="Fundo"
+                        class="absolute inset-0 w-full h-full object-contain pointer-events-none z-0">
+
+                    <!-- Ícone de WhatsApp -->
+                    <iconify-icon icon="ph:whatsapp-logo" width="34" height="34" style="color:#000;"
+                        class="relative z-10"></iconify-icon>
+
+                </button>
+
+                <!-- Presentes -->
+                <a
+                    href="presentes.html"
+                    class="relative w-20 h-20 flex items-center justify-center shadow-xl hover:scale-110 transition duration-300">
+
+                    <!-- Imagem de Fundo (Círculo) -->
+                    <img
+                        src="img/circulo.png"
+                        alt="Fundo"
+                        class="absolute inset-0 w-full h-full object-contain pointer-events-none z-0">
+
+                    <!-- Ícone de Presente -->
+                    <iconify-icon icon="ph:gift" width="34" height="34" style="color:#000;"
+                        class="relative z-10"></iconify-icon>
+
+                </a>
+
+                <!-- Localização -->
+                <button
+                    type="button"
+                    id="btnLocalizacao"
+                    class="relative w-20 h-20 flex items-center justify-center shadow-xl hover:scale-110 transition duration-300">
+
+                    <!-- Imagem de fundo do círculo -->
+                    <img
+                        src="img/circulo.png"
+                        alt="Fundo"
+                        class="absolute inset-0 w-full h-full object-contain pointer-events-none z-0">
+
+                    <!-- Ícone SVG por cima -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-10 h-10 relative z-10"
+                        fill="black"
+                        viewBox="0 0 24 24">
+
+                        <path
+                            d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z" />
+                    </svg>
+
+                </button>
+
+            </div>
+            <button
+                id="btnMais"
+                class="mt-4 px-10 py-3 bg-cover bg-center rounded-full text-black text-lg tracking-[3px] uppercase shadow-lg hover:scale-105 transition"
+                style="background-image: url('img/oval.png');">
+
+                <span id="textoBtnMais">Ver Mais</span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- SEGUNDA PÁGINA -->
+    <section id="conviteExtra"
+            class="hidden min-h-screen text-white relative z-10 overflow-hidden">
+
+        <div
+            class="max-w-[380px] mx-auto min-h-screen flex flex-col items-center text-center px-6 py-12">
+
+            <!-- Título -->
+            <h2
+                style="font-family:'Great Vibes',cursive;"
+                class="text-white text-7xl sm:mt-8 md:mt-8">
+
+                Detalhes aos Convidados
+
+            </h2>
+
+            <!-- Linha decorativa -->
+            <img
+                src="img/arabesco-inferior.png"
+                alt="arabesco"
+                class="w-50 mt-2">
+
+            <!-- Lista -->
+            <div class="mt-2 text-left">
+
+                <ul class="texto-dourado text-base leading-8 space-y-3">
+
+                    <li>
+                        • O Traje sugerido é Social/Esporte fino - All Black
+                    </li>
+
+                    <li>
+                        • Não será permitida a entrada de nenhuma bebida externa.
+                    </li>
+
+                    <li>
+                        • Chegue 30 minutinhos antes da cerimônia começar para a fotografia.
+                    </li>
+
+                    <li>
+                        • Retirada da máscara será feita na recepção do evento.
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Contagem Regressiva -->
+            <div class="mt-8 mb-8">
+
+                <p
+                    class="text-white text-base tracking-[3px] uppercase mb-4">
+
+                    Faltam
+
+                </p>
+
+                <div
+                    id="contador"
+                    class="flex justify-center gap-4">
+
+                    <div class="text-center">
+                        <div id="dias" class="texto-dourado text-4xl font-bold">00</div>
+                        <div class="text-sm text-white uppercase">Dias</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div id="horas" class="texto-dourado text-4xl font-bold">00</div>
+                        <div class="text-sm text-white uppercase">Horas</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div id="minutos" class="texto-dourado text-4xl font-bold">00</div>
+                        <div class="text-sm text-white uppercase">Min</div>
+                    </div>
+
+                    <div class="text-center">
+                        <div id="segundos" class="texto-dourado text-4xl font-bold">00</div>
+                        <div class="text-sm text-white uppercase">Seg</div>
+                    </div>
+
+                </div>
+
+                <img
+                    src="img/arabesco-inferior.png"
+                    alt=""
+                    class="w-50 mt-4">
+
+            </div>
+
+            <!-- Mensagem Final -->
+            <div class="mt-6 mb-16">
+
+                <p
+                    style="font-family:'Great Vibes',cursive;"
+                    class="text-white text-3xl leading-tight">
+
+                    Será uma alegria compartilhar
+                    <br>
+                    esse momento com você!
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Gradiente dourado compartilhado (borda e X dos popups) -->
+    <svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+        <defs>
+            <linearGradient id="gradienteDourado" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#cda729" />
+                <stop offset="45%" stop-color="#cebb62" />
+                <stop offset="80%" stop-color="#ac8426" />
+                <stop offset="100%" stop-color="#a4721c" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Popup WhatsApp -->
+    <div id="popupWhatsapp"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-6">
+
+        <div class="popup-borda-dourada rounded-2xl max-w-sm w-full">
+        <div class="relative bg-black rounded-2xl p-6 text-center">
+
+            <button
+                type="button"
+                class="popup-fechar absolute top-3 left-3 hover:opacity-70 transition"
+                data-popup="popupWhatsapp"
+                aria-label="Fechar">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 5L19 19M19 5L5 19" stroke="url(#gradienteDourado)" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <h3 class="texto-dourado text-3xl font-bold mt-6" style="font-family:'Playfair Display', serif;">
+                WhatsApp
+            </h3>
+
+            <p class="text-white text-base mt-4 leading-6">
+                Ficou com alguma dúvida sobre o Baile de Máscaras da Júlia?
+                Clique no botão abaixo e me chame no WhatsApp que eu respondo rapidinho!
+            </p>
+
+            <a
+                href="https://wa.me/5519994715062"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block mt-6 px-10 py-3 bg-cover bg-center rounded-full text-black text-lg tracking-[3px] uppercase shadow-lg hover:scale-105 transition"
+                style="background-image: url('img/oval.png');">
+                Abrir WhatsApp
+            </a>
+
+        </div>
+        </div>
+
+    </div>
+
+    <!-- Popup Localização -->
+    <div id="popupLocalizacao"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-6">
+
+        <div class="popup-borda-dourada rounded-2xl max-w-sm w-full">
+        <div class="relative bg-black rounded-2xl p-6 text-center">
+
+            <button
+                type="button"
+                class="popup-fechar absolute top-3 left-3 hover:opacity-70 transition"
+                data-popup="popupLocalizacao"
+                aria-label="Fechar">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 5L19 19M19 5L5 19" stroke="url(#gradienteDourado)" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <h3 class="texto-dourado text-3xl font-bold mt-6" style="font-family:'Playfair Display', serif;">
+                Localização
+            </h3>
+
+            <p class="text-white text-base mt-4 leading-6">
+                Royale Eventos<br>
+                Av. dos Trabalhadores, 500<br>
+                Mogi Guaçu - SP
+                <br><br>
+                Se preferir, clique no botão abaixo que ele te levará direto para o Google Maps.
+            </p>
+
+            <a
+                href="https://maps.app.goo.gl/bTWgwvDjULR4H4Aq6"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block mt-6 px-10 py-3 bg-cover bg-center rounded-full text-black text-lg tracking-[3px] uppercase shadow-lg hover:scale-105 transition"
+                style="background-image: url('img/oval.png');">
+                Abrir no Google Maps
+            </a>
+
+        </div>
+        </div>
+
+    </div>
+
+    <script src="js/lembrete.js"></script>
+    <script src="js/poeira.js"></script>
+    <script src="js/sessao.js"></script>
+
+</body>
+
+</html>
